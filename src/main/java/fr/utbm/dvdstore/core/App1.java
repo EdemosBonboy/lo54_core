@@ -5,10 +5,17 @@
  */
 package fr.utbm.dvdstore.core;
 
+import fr.utbm.dvdstore.core.controller.DefaultFilmController;
+import fr.utbm.dvdstore.core.entity.Film;
+import fr.utbm.dvdstore.core.service.FilmService;
+
 /**
  *
  * @author bonbo
  */
 public class App1 {
-    
+    public static void main(String[] args) {
+        DefaultFilmController defaultFilmController = new DefaultFilmController();
+        defaultFilmController.registerFilmFromConsoleInput();
+    }
 }
