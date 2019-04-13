@@ -21,7 +21,7 @@ public class FileFilmDao {
             writer = new FileWriter("films.csv", true);
             writer.write(f.getTitre() + ";" + f.getGenre() + ";" + f.getNbExemplaires() + "\n");
             writer.close();
-            System.out.println("Film enregistré avec succès !");
+            System.out.println("\nEnregistrement effectué avec succès !");
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Erreur lors de l'écriture dans le fichier !");

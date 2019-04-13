@@ -7,6 +7,7 @@ package fr.utbm.dvdstore.core.controller;
 
 import fr.utbm.dvdstore.core.entity.Film;
 import fr.utbm.dvdstore.core.service.FilmService;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -26,5 +27,10 @@ public class DefaultFilmController {
         Film film = new Film(titre, genre, nbEx);
         FilmService filmService = new FilmService();
         filmService.registerFilm(film);
+    }
+    
+    public void getFilmsFromDb() {
+        FilmService filmService = new FilmService();
+        filmService.getAllFilms();
     }
 }
