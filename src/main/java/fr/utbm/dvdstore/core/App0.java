@@ -5,16 +5,14 @@
  */
 package fr.utbm.dvdstore.core;
 
-import fr.utbm.dvdstore.core.controller.DefaultFilmController;
+import fr.utbm.dvdstore.core.util.HibernateUtil;
 
 /**
  *
  * @author bonbo
  */
-public class App1 {
+public class App0 {
     public static void main(String[] args) {
-        DefaultFilmController defaultFilmController = new DefaultFilmController();
-        defaultFilmController.registerFilmFromConsoleInput();
-        //defaultFilmController.getFilmsFromDb();
+        HibernateUtil.getSessionFactory();
     }
 }

@@ -33,4 +33,13 @@ public class DefaultFilmController {
         FilmService filmService = new FilmService();
         filmService.getAllFilms();
     }
+    
+    public void getDetailsFilmFromConsoleInput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Identifiant du film : ");
+        int id = sc.nextInt();
+        
+        FilmService filmService = new FilmService();
+        filmService.detailsFilm(id);
+    }
 }

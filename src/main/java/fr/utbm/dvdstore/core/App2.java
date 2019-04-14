@@ -11,10 +11,9 @@ import fr.utbm.dvdstore.core.controller.DefaultFilmController;
  *
  * @author bonbo
  */
-public class App1 {
+public class App2 {
     public static void main(String[] args) {
         DefaultFilmController defaultFilmController = new DefaultFilmController();
-        defaultFilmController.registerFilmFromConsoleInput();
-        //defaultFilmController.getFilmsFromDb();
+        defaultFilmController.getDetailsFilmFromConsoleInput();
     }
 }
