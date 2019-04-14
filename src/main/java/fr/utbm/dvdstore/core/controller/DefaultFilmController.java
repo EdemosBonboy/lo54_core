@@ -42,4 +42,9 @@ public class DefaultFilmController {
         FilmService filmService = new FilmService();
         filmService.detailsFilm(id);
     }
+    
+    public void listFilmsFromHibernate() {
+        FilmService filmService = new FilmService();
+        filmService.listFilmsFromHibernate();
+    }
 }

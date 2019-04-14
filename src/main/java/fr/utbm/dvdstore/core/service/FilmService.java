@@ -10,6 +10,7 @@ import fr.utbm.dvdstore.core.repository.FileFilmDao;
 import fr.utbm.dvdstore.core.repository.HibernateFilmDao;
 import fr.utbm.dvdstore.core.repository.JdbcFilmDao;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -47,6 +48,19 @@ public class FilmService {
             System.out.println(film.toString());
         } else {
             System.out.println("Aucun film trouvé avec l'identifiant " + id);
+        }
+    }
+    
+    public void listFilmsFromHibernate() {
+        HibernateFilmDao hibernateFilmDao = new HibernateFilmDao();
+        List<Film> films = hibernateFilmDao.listFilms();
+        if (films != null && films.size() > 0) {
+            System.out.println(films.size() + " films trouvés !");
+            for (Film f : films) {
+                System.out.println("Titre : " + f.getTitre());
+            }
+        } else {
+            System.out.println("Aucun film trouvé !");
         }
     }
 }

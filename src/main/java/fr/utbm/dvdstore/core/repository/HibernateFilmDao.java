@@ -7,8 +7,11 @@ package fr.utbm.dvdstore.core.repository;
 
 import fr.utbm.dvdstore.core.entity.Film;
 import fr.utbm.dvdstore.core.util.HibernateUtil;
+import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 /**
  *
@@ -37,7 +40,7 @@ public class HibernateFilmDao {
             if (session != null) {
                 try {
                     session.close();
-                    System.out.println("\nSession terminée !\n");
+                    StandardServiceRegistryBuilder.destroy(session.getSessionFactory().getSessionFactoryOptions().getServiceRegistry());
                 } catch (HibernateException he3) {
                     he3.printStackTrace();
                 }
@@ -57,11 +60,34 @@ public class HibernateFilmDao {
             if (session != null) {
                 try {
                     session.close();
+                    StandardServiceRegistryBuilder.destroy(session.getSessionFactory().getSessionFactoryOptions().getServiceRegistry());
                 } catch (HibernateException he2) {
                     he2.printStackTrace();
                 }
             }
         }
         return film;
+    }
+    
+    public List<Film> listFilms() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Film> films = null;
+        try {
+            Query query = session.createQuery("from Film");
+            films = query.list();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        } finally {
+            if (session != null) {
+                try {
+                    session.close();
+                    StandardServiceRegistryBuilder.destroy(session.getSessionFactory().getSessionFactoryOptions().getServiceRegistry());
+                } catch (HibernateException he2) {
+                    he2.printStackTrace();
+                }
+            }
+        }
+        
+        return films;
     }
 }
