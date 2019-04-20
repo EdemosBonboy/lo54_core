@@ -5,12 +5,14 @@
  */
 package fr.utbm.dvdstore.core.service;
 
+import fr.utbm.dvdstore.core.entity.Acteur;
 import fr.utbm.dvdstore.core.entity.Film;
 import fr.utbm.dvdstore.core.repository.FileFilmDao;
 import fr.utbm.dvdstore.core.repository.HibernateFilmDao;
 import fr.utbm.dvdstore.core.repository.JdbcFilmDao;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -44,8 +46,18 @@ public class FilmService {
         HibernateFilmDao hibernateFilmDao = new HibernateFilmDao();
         Film film =  hibernateFilmDao.detailsFilm(id);
         if (film != null) {
-            System.out.println("Film trouvé !");
-            System.out.println(film.toString());
+            System.out.println("\nFilm trouvé !");
+            System.out.print(film.toString());
+            if (film.getActeurPrincipal() != null) {
+                System.out.println(", acteurPrincipal = " + film.getActeurPrincipal().toString());
+            }
+            Set<Acteur> acteurs = film.getActeurs();
+            if (acteurs != null) {
+                System.out.print("Acteurs secondaires : ");
+                for (Acteur a : acteurs) {
+                    System.out.print(a.getFirstName() + " " + a.getLastName() + ", ");
+                }
+            }
         } else {
             System.out.println("Aucun film trouvé avec l'identifiant " + id);
         }

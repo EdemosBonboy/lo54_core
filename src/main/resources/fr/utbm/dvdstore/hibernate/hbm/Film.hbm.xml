@@ -47,5 +47,11 @@ Contributor(s):
         <property name="titre" column="title" type="string" not-null="true" />
         <property name="genre" column="movie_type" type="string" not-null="true" />
         <property name="nbExemplaires" column="copies" type="integer" not-null="true" />
+        <many-to-one name="acteurPrincipal" column="main_actor_id" cascade="persist" />
+        <set name="acteurs" table="movie_sec_actors" cascade="persist">
+            <key column="id_movie" />
+            <many-to-many class="fr.utbm.dvdstore.core.entity.Acteur"
+                            column="id_actor" />
+        </set>
     </class>
 </hibernate-mapping>

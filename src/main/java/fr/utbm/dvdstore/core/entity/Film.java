@@ -6,6 +6,7 @@
 package fr.utbm.dvdstore.core.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  *
@@ -16,6 +17,8 @@ public class Film implements Serializable {
     private String titre;
     private String genre;
     private Integer nbExemplaires;
+    private Acteur acteurPrincipal;
+    private Set<Acteur> acteurs;
     
     public Film() { }
 
@@ -55,6 +58,22 @@ public class Film implements Serializable {
 
     public void setNbExemplaires(Integer nbExemplaires) {
         this.nbExemplaires = nbExemplaires;
+    }
+
+    public Acteur getActeurPrincipal() {
+        return acteurPrincipal;
+    }
+
+    public void setActeurPrincipal(Acteur acteurPrincipal) {
+        this.acteurPrincipal = acteurPrincipal;
+    }
+
+    public Set<Acteur> getActeurs() {
+        return acteurs;
+    }
+
+    public void setActeurs(Set<Acteur> acteurs) {
+        this.acteurs = acteurs;
     }
 
     @Override

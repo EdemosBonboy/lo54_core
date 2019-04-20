@@ -39,4 +39,9 @@ public class Acteur implements Serializable {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    @Override
+    public String toString() {
+        return "Acteur{" + "id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + '}';
+    }
 }

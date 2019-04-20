@@ -8,6 +8,7 @@ package fr.utbm.dvdstore.core.repository;
 import fr.utbm.dvdstore.core.entity.Film;
 import fr.utbm.dvdstore.core.util.HibernateUtil;
 import java.util.List;
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -54,6 +55,9 @@ public class HibernateFilmDao {
         try {
             session.beginTransaction();
             film = (Film) session.get(Film.class, id);
+            Hibernate.initialize(film.getActeurPrincipal());
+            Hibernate.initialize(film.getActeurs());
+            session.getTransaction().commit();
         } catch (HibernateException he) {
             he.printStackTrace();
         } finally {
@@ -73,8 +77,10 @@ public class HibernateFilmDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<Film> films = null;
         try {
+            session.beginTransaction();
             Query query = session.createQuery("from Film");
             films = query.list();
+            session.getTransaction().commit();
         } catch (HibernateException he) {
             he.printStackTrace();
         } finally {
